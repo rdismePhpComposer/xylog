@@ -1,0 +1,23 @@
+{
+    "name": "rdisme/xylog",
+    "description": "xylog",
+    "authors": [
+        {
+            "name": "rdisme",
+            "email": "rendao.sun@foxmail.com"
+        }
+    ],
+    "keywords": [
+        "log"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Rdisme\\Xylog\\": "src"
+        }
+    },
+    "require": {
+        "rdisme/http": "^0.1.0",
+        "rdisme/tools": "^1.0.0"
+    },
+    "license": "MIT"
+}
