@@ -11,6 +11,8 @@ class Log
 
     private $params;
     private $url;
+    private $time;
+    private $ip;
 
 
     /**
@@ -23,6 +25,8 @@ class Log
         $this->params = $params;
         $this->url = $this->_getArg('api_url');
         $this->url .= '?_AID=' . $this->_getArg('app_id');
+        $this->time = time();
+        $this->ip = Ip::get();
     }
 
 
@@ -66,10 +70,31 @@ class Log
     }
 
 
+    /**
+     * 设置事件发生时间
+     * 格式为时间戳
+     */
+    public function set_time($val)
+    {
+        $this->time = $val;
+        return $this;
+    }
+
+
+    /**
+     * 设置ip
+     */
+    public function set_ip($val)
+    {
+        $this->ip = $val;
+        return $this;
+    }
+
+
     public function log()
     {
-        $this->url .= '&_T=' . time();
-        $this->url .= '&_IP=' . Ip::get();
+        $this->url .= '&_T=' . $this->time;
+        $this->url .= '&_IP=' . $this->ip;
         return Get::send($this->url);
     }
 
